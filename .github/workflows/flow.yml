@@ -7,5 +7,6 @@ jobs:
     runs-on:
       name: ubuntu-latest
       entrypoint: [""]
-  script:
-    - whoami
+    steps:
+    - name: ask
+      run: whoami
