@@ -4,9 +4,7 @@ on: workflow_dispatch
 
 jobs:
   postman_tests:
-    runs-on:
-      name: ubuntu-latest
-      entrypoint: [""]
+    runs-on: ubuntu-latest
     steps:
     - name: ask
       run: whoami
