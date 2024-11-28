@@ -1,19 +1,12 @@
-stages:
-  - test
+name: nwmanCi
 
-on:
-  workflow_dispatch:
-    inputs:
-      name:
-        description: 'Person to greet'
-        default: 'World'
-        required: true
-        type: string
+on: workflow_dispatch
 
-postman_tests:
-  stage: test
-  image:
-    name: postman/newman_alpine33
-    entrypoint: [""]
+jobs:
+  postman_tests:
+    runs-on:
+      image:
+      name: runs-on: ubuntu-latest
+      entrypoint: [""]
   script:
-    - newman --version
+    - whoami
