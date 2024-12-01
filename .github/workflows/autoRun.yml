@@ -1,10 +1,11 @@
 name: Run Postman Collection and Generate Allure Report
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
+  # push:
+  #  branches:
+  #    - main
+  #pull_request:
+  workflow_dispatch
 
 jobs:
   run-postman-tests:
@@ -26,6 +27,17 @@ jobs:
       run: |
         npm install -g newman newman-reporter-allure
         npm install -g allure-commandline --unsafe-perm
+
+    # Step 3.5: Fetch latest collection
+    - name: Fetch Collection
+      env:
+        PM_API_KEY: ${{secrets.PM_API_KEY}}
+        PM_COLLECTION_LINK: ${{env.PM_COLLECTION_LINK}}
+      run: |
+        echo "Fetching Postman collection..."
+        echo $PM_COLLECTION_LINK
+        curl -H "X-Api-Key: $PM_API_KEY" "$PM_COLLECTION_LINK" -o newmanTest_collection.json
+
 
     # Step 4: Run Postman Collection using Newman
     - name: Run Postman Collection
