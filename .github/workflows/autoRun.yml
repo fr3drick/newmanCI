@@ -32,7 +32,7 @@ jobs:
     - name: Fetch Collection
       env:
         PM_API_KEY: ${{secrets.PM_API_KEY}}
-        PM_COLLECTION_LINK: ${{env.PM_COLLECTION_LINK}}
+        PM_COLLECTION_LINK: ${{vars.PM_COLLECTION_LINK}}
       run: |
         echo "Fetching Postman collection..."
         echo $PM_COLLECTION_LINK
